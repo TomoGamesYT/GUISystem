@@ -1,0 +1,4 @@
+name: GUISystem
+version: '${project.version}'
+main: com.github.tomogamesyt.guisystem.guisystem.Main
+api-version: 1.19
