@@ -29,8 +29,7 @@ public class HistoryData {
     private final Deque<InventoryQueue> queues = new ConcurrentLinkedDeque<>();
 
     public HistoryData addQueue(UUID uuid, iInventoryFrame invFrame){
-        InventoryQueue invQueue = new InventoryQueue(uuid, invFrame);
-        queues.push(invQueue);
+        queues.push(new InventoryQueue(uuid, invFrame));
         return this;
     }
 

@@ -31,8 +31,6 @@ public class EventListener implements Listener {
         InventoryHolder holder = inventory.getHolder();
 
         if(holder == null)return;
-        if(!(holder instanceof CustomInventory))return;
-
 
     }
 
@@ -45,13 +43,12 @@ public class EventListener implements Listener {
         event.setCancelled(true);
 
         InventoryHolder holder = inventory.getHolder();
-        if (holder == null){
-            player.sendMessage("holder null"); return;
-        }
+        if (holder == null)return;
 
-        if(!main.genInventory().getHistoryData().get(player.getUniqueId()).getCurrentInventory().getInventoryClass().equals(GenInventory.armor())){player.sendMessage("this is not armor menu");return;}
+        HistoryData history = HistoryData.getHistoryData(main.genInventory(), player);
+        if(history.getCurrentInventory().getInventoryClass().equals(GenInventory.armor()))return;
 
-        player.sendMessage("ClickTest", main.genInventory().getHistoryData().get(player.getUniqueId()).getCurrentInventory() + " ");
+        player.sendMessage("ClickTest");
 
     }
 }
