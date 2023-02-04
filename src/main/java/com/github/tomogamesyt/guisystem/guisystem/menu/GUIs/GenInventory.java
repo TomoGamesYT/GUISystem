@@ -8,6 +8,12 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GenInventory {
+    private static GenInventory genInventory;
+
+    public GenInventory(){
+        genInventory = this;
+    }
+
     public static iInventoryFrame armor(){
         return new ArmorMenu();
     }
@@ -22,5 +28,9 @@ public class GenInventory {
 
     public Map<UUID, HistoryData> getHistoryData(){
         return historyMap;
+    }
+
+    public static GenInventory getGenInventory() {
+        return genInventory;
     }
 }
