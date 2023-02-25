@@ -1,10 +1,9 @@
 package com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame;
 
-import org.bukkit.Material;
+import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -17,14 +16,10 @@ public class CustomInventory implements InventoryHolder {
         this.initInventory(inventory);
         this.uuid = uuid;
     }
-
     private void initInventory(Inventory inventory){
         int size = inventory.getSize();
         if(size % 9 != 0)return;
-        ItemStack itemStack = new ItemStack(Material.WHITE_STAINED_GLASS_PANE);
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(" ");
-        itemStack.setItemMeta(itemMeta);
+        ItemStack itemStack = MenuItem.toItemStack(MenuItem.nullItem());
         for(int slot = 0; slot<size; slot++){
             inventory.setItem(slot, itemStack);
         }

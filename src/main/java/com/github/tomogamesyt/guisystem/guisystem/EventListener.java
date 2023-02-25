@@ -1,15 +1,20 @@
 package com.github.tomogamesyt.guisystem.guisystem;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.GUIs.GenInventory;
+import com.github.tomogamesyt.guisystem.guisystem.menu.gui.GenInventory;
+import com.github.tomogamesyt.guisystem.guisystem.menu.gui.iInventoryFrame;
+import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
 import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.HistoryData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+
+import java.util.Objects;
 
 public class EventListener implements Listener {
 
@@ -20,11 +25,16 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onClose(InventoryCloseEvent event){
+        Player player = (Player) event.getPlayer();
         Inventory inventory = event.getInventory();
+
         InventoryHolder holder = inventory.getHolder();
 
         if(holder == null)return;
+        if(!(holder instanceof iInventoryFrame))return;
 
+        iInventoryFrame inventoryClass = HistoryData.getHistoryData(GenInventory.getGenInventory(), player).getCurrentInventory().getInventoryClass();
+        inventoryClass.closeEvent(event);
     }
 
     @EventHandler
@@ -38,10 +48,22 @@ public class EventListener implements Listener {
         InventoryHolder holder = inventory.getHolder();
         if (holder == null)return;
 
-        HistoryData history = HistoryData.getHistoryData(GenInventory.getGenInventory(), player);
-        if(history.getCurrentInventory().getInventoryClass().equals(GenInventory.armor()))return;
+        if(event.getCurrentItem() == null)return;
 
-        player.sendMessage("ClickTest");
+        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.nullItem())))return;
 
+        iInventoryFrame inventoryClass = HistoryData.getHistoryData(GenInventory.getGenInventory(), player).getCurrentInventory().getInventoryClass();
+
+        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.previousButton()))) new GenInventory().open(player, inventoryClass.getPrevious());
+
+        inventoryClass.clickEvent(event);
+    }
+
+    @EventHandler
+    public void onAttack(PlayerAnimationEvent event){
+        Player player = event.getPlayer();
+        if(!player.isSneaking())return;
+
+        new GenInventory().open(player, GenInventory.armor());
     }
 }

@@ -1,4 +1,4 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.GUIs;
+package com.github.tomogamesyt.guisystem.guisystem.menu.gui;
 
 import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.HistoryData;
 import org.bukkit.entity.Player;
