@@ -4,17 +4,18 @@ import com.github.tomogamesyt.guisystem.guisystem.menu.gui.GenInventory;
 import com.github.tomogamesyt.guisystem.guisystem.menu.gui.iInventoryFrame;
 import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
 import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.HistoryData;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerAnimationEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-
-import java.util.Objects;
 
 public class EventListener implements Listener {
 
@@ -42,28 +43,40 @@ public class EventListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         Inventory inventory = event.getClickedInventory();
         if (inventory == null)return;
+        if(event.getCurrentItem() == null)return;
 
         event.setCancelled(true);
 
+        if(inventory.getType().equals(InventoryType.PLAYER)){
+            //Player Inventory//
+            GenInventory.player().clickEvent(event);
+            return;
+        }
+
         InventoryHolder holder = inventory.getHolder();
         if (holder == null)return;
-
-        if(event.getCurrentItem() == null)return;
 
         if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.nullItem())))return;
 
         iInventoryFrame inventoryClass = HistoryData.getHistoryData(GenInventory.getGenInventory(), player).getCurrentInventory().getInventoryClass();
 
-        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.previousButton()))) new GenInventory().open(player, inventoryClass.getPrevious());
+        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.closeButton()))){
+            player.closeInventory();
+            return;
+        }
 
+        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.previousButton()))) {
+            new GenInventory().open(player, inventoryClass.getPrevious());
+            return;
+        }
         inventoryClass.clickEvent(event);
     }
 
     @EventHandler
-    public void onAttack(PlayerAnimationEvent event){
+    public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        if(!player.isSneaking())return;
-
-        new GenInventory().open(player, GenInventory.armor());
+        if(player.getGameMode() == GameMode.CREATIVE||player.getGameMode() == GameMode.SPECTATOR)return;
+        GenInventory.player().getInventory(player);
+        player.updateInventory();
     }
 }

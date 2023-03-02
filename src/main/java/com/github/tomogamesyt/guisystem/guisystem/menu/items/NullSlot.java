@@ -7,7 +7,7 @@ import java.util.List;
 class NullSlot implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return "";
+        return " ";
     }
     @Override
     public Material getMaterial() {

@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 class ArmorMenu implements iInventoryFrame{
@@ -22,6 +23,17 @@ class ArmorMenu implements iInventoryFrame{
     }
     @Override
     public void clickEvent(InventoryClickEvent event) {
+        ItemStack item = event.getCurrentItem();
+        Player player = (Player) event.getWhoClicked();
+        if (MenuItem.toItemStack(MenuItem.helmButton()).equals(item)) {
+            new GenInventory().open(player, helm());
+        } else if (MenuItem.toItemStack(MenuItem.chstpltButton()).equals(item)) {
+            new GenInventory().open(player, chstplt());
+        }else if(MenuItem.toItemStack(MenuItem.leggButton()).equals(item)){
+            new GenInventory().open(player, leggs());
+        }else if(MenuItem.toItemStack(MenuItem.bootsButton()).equals(item)){
+            new GenInventory().open(player, boots());
+        }
     }
     @Override
     public void closeEvent(InventoryCloseEvent event) {
@@ -31,7 +43,7 @@ class ArmorMenu implements iInventoryFrame{
     public Inventory getInventory() {
         Inventory inv = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 54, player.getDisplayName() + " armor")).getInventory();
         //Do Something..//
-        inv.setItem(inv.getSize()- 9, MenuItem.toItemStack(MenuItem.previousButton()));
+        inv.setItem(inv.getSize()- 9, MenuItem.toItemStack(MenuItem.closeButton()));
 
         inv.setItem(10, MenuItem.toItemStack(MenuItem.helmButton()));
         inv.setItem(19, MenuItem.toItemStack(MenuItem.chstpltButton()));
@@ -41,11 +53,11 @@ class ArmorMenu implements iInventoryFrame{
         return inv;
     }
 
-    public static iInventoryFrame helm(){return new SelectHelmet();}
+    private iInventoryFrame helm(){return new SelectHelmet();}
 
-    public static iInventoryFrame chstplt(){return new SelectChestplate();}
+    private iInventoryFrame chstplt(){return new SelectChestplate();}
 
-    public static iInventoryFrame leggs(){return new SelectLeggings();}
+    private iInventoryFrame leggs(){return new SelectLeggings();}
 
-    public static iInventoryFrame boots(){return new SelectBoots();}
+    private iInventoryFrame boots(){return new SelectBoots();}
 }

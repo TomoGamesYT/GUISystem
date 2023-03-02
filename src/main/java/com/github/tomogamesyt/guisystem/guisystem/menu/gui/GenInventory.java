@@ -18,6 +18,10 @@ public class GenInventory {
         return new ArmorMenu();
     }
 
+    public static iInventoryFrame player(){
+        return new PlayerInventory();
+    }
+
     public void open(Player player, iInventoryFrame inventoryFrame){
         if(inventoryFrame == null)return;
         HistoryData.getHistoryData(this, player).addQueue(player.getUniqueId(), inventoryFrame);

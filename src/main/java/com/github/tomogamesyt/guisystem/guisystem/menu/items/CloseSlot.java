@@ -5,19 +5,22 @@ import org.bukkit.Material;
 
 import java.util.List;
 
-class HelmButton implements iMenuItem{
+class CloseSlot implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return ChatColor.GOLD + "Helmetを選ぶ";
+        return ChatColor.RED + "閉じる";
     }
+
     @Override
     public Material getMaterial() {
-        return Material.IRON_HELMET;
+        return Material.BARRIER;
     }
+
     @Override
     public List<String> getLore() {
         return null;
     }
+
     @Override
     public int getCustomModelData() {
         return 0;

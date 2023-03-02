@@ -1,5 +1,6 @@
 package com.github.tomogamesyt.guisystem.guisystem.menu.items;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 class LeggingsButton implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return "Leggingsを選ぶ";
+        return ChatColor.GOLD + "Leggingsを選ぶ";
     }
     @Override
     public Material getMaterial() {
