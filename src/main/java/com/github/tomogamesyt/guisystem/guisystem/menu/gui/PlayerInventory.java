@@ -1,17 +1,21 @@
 package com.github.tomogamesyt.guisystem.guisystem.menu.gui;
 
+import com.github.tomogamesyt.guisystem.guisystem.Main;
 import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerInventory implements iInventoryFrame{
     private Player player;
     private final ItemStack nullSlot = MenuItem.toItemStack(MenuItem.nullItem());
     private final ItemStack armorButton = MenuItem.toItemStack(MenuItem.armorButton());
+
+    private final Main main;
 
     @Override
     public Inventory getInventory(Player player) {
@@ -26,10 +30,16 @@ public class PlayerInventory implements iInventoryFrame{
 
     @Override
     public void clickEvent(InventoryClickEvent event) {
+        event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
         player.sendMessage("Slot: " + event.getSlot());
         if(event.getCurrentItem().equals(armorButton)){
-            new GenInventory().open(player, GenInventory.armor());
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    new GenInventory().open(player, GenInventory.armor());
+                }
+            }.runTask(main.getPlugin());
         }else {
             GenInventory.armor().clickEvent(event);
         }
@@ -55,5 +65,9 @@ public class PlayerInventory implements iInventoryFrame{
         inventory.setItem(37, MenuItem.toItemStack(MenuItem.leggButton()));
         inventory.setItem(36, MenuItem.toItemStack(MenuItem.bootsButton()));
         return inventory;
+    }
+
+    PlayerInventory(Main main){
+        this.main = main;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.tomogamesyt.guisystem.guisystem.menu.gui;
 
+import com.github.tomogamesyt.guisystem.guisystem.Main;
 import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.HistoryData;
 import org.bukkit.entity.Player;
 
@@ -18,8 +19,8 @@ public class GenInventory {
         return new ArmorMenu();
     }
 
-    public static iInventoryFrame player(){
-        return new PlayerInventory();
+    public static iInventoryFrame player(Main main){
+        return new PlayerInventory(main);
     }
 
     public void open(Player player, iInventoryFrame inventoryFrame){

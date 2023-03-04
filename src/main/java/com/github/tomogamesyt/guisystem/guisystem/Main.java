@@ -1,20 +1,22 @@
 package com.github.tomogamesyt.guisystem.guisystem;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.gui.GenInventory;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
-public class Main extends JavaPlugin {
+public class Main{
+    private final Plugin plugin;
+
     public void runSync(Runnable runnable){
-        Bukkit.getScheduler().runTask(this, runnable);
+        Bukkit.getScheduler().runTask(plugin, runnable);
     }
 
-    public GenInventory getGenInventory(){
-        return GenInventory.getGenInventory();
+    public Plugin getPlugin() {
+        return plugin;
     }
 
-    @Override
-    public void onEnable(){
-        Bukkit.getServer().getPluginManager().registerEvents(new EventListener(), this);
+    public Main(Plugin plugin) {
+        this.plugin = plugin;
+        Bukkit.getServer().getPluginManager().registerEvents(new EventListener(this), plugin);
     }
 }
+

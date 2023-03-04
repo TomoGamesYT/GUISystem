@@ -11,13 +11,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 public class EventListener implements Listener {
+    private final Main main;
+
+    public EventListener(Main main){
+        this.main = main;
+    }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
@@ -28,6 +32,8 @@ public class EventListener implements Listener {
     public void onClose(InventoryCloseEvent event){
         Player player = (Player) event.getPlayer();
         Inventory inventory = event.getInventory();
+
+        if(player.getGameMode() == GameMode.CREATIVE||player.getGameMode() == GameMode.SPECTATOR)return;
 
         InventoryHolder holder = inventory.getHolder();
 
@@ -45,11 +51,13 @@ public class EventListener implements Listener {
         if (inventory == null)return;
         if(event.getCurrentItem() == null)return;
 
+        if(player.getGameMode() == GameMode.CREATIVE||player.getGameMode() == GameMode.SPECTATOR)return;
+
         event.setCancelled(true);
 
         if(inventory.getType().equals(InventoryType.PLAYER)){
             //Player Inventory//
-            GenInventory.player().clickEvent(event);
+            GenInventory.player(main).clickEvent(event);
             return;
         }
 
@@ -76,7 +84,8 @@ public class EventListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         if(player.getGameMode() == GameMode.CREATIVE||player.getGameMode() == GameMode.SPECTATOR)return;
-        GenInventory.player().getInventory(player);
+        GenInventory.player(main).getInventory(player);
+        HistoryData.getHistoryData(new GenInventory(), player).addQueue(player.getUniqueId(), GenInventory.player(main));
         player.updateInventory();
     }
 }
