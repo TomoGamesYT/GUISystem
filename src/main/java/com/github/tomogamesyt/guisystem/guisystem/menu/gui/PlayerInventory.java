@@ -33,16 +33,16 @@ public class PlayerInventory implements iInventoryFrame{
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
         player.sendMessage("Slot: " + event.getSlot());
-        if(event.getCurrentItem().equals(armorButton)){
-            new BukkitRunnable() {
-                @Override
-                public void run() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if(event.getCurrentItem().equals(armorButton)){
                     new GenInventory().open(player, GenInventory.armor());
-                }
-            }.runTask(main.getPlugin());
-        }else {
-            GenInventory.armor().clickEvent(event);
-        }
+                }else{
+                    GenInventory.armor().clickEvent(event);
+               }
+            }
+        }.runTask(main.getPlugin());
         getInventory(player);
         player.updateInventory();
     }
