@@ -32,7 +32,6 @@ public class PlayerInventory implements iInventoryFrame{
     public void clickEvent(InventoryClickEvent event) {
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
-        player.sendMessage("Slot: " + event.getSlot());
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -43,8 +42,6 @@ public class PlayerInventory implements iInventoryFrame{
                }
             }
         }.runTask(main.getPlugin());
-        getInventory(player);
-        player.updateInventory();
     }
 
     @Override
