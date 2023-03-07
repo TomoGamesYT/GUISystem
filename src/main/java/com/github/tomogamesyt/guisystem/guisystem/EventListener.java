@@ -55,16 +55,17 @@ public class EventListener implements Listener {
 
         event.setCancelled(true);
 
-        if(inventory.getType().equals(InventoryType.PLAYER)){
-            //Player Inventory//
-            GenInventory.player(main).clickEvent(event);
-            return;
-        }
 
         InventoryHolder holder = inventory.getHolder();
         if (holder == null)return;
 
         if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.nullItem())))return;
+
+        if(inventory.getType().equals(InventoryType.PLAYER)){
+            //Player Inventory//
+            GenInventory.player(main).clickEvent(event);
+            return;
+        }
 
         iInventoryFrame inventoryClass = HistoryData.getHistoryData(GenInventory.getGenInventory(), player).getCurrentInventory().getInventoryClass();
 
