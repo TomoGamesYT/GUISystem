@@ -1,23 +1,24 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.items;
+package com.botrpg.tomogamesyt.guilib.menu.items;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.List;
 
-class HelmButton implements iMenuItem{
+class NullSlot implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return ChatColor.GOLD + "Helmetを選ぶ";
+        return " ";
     }
     @Override
     public Material getMaterial() {
-        return Material.IRON_HELMET;
+        return Material.WHITE_STAINED_GLASS_PANE;
     }
+
     @Override
     public List<String> getLore() {
         return null;
     }
+
     @Override
     public int getCustomModelData() {
         return 0;

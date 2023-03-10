@@ -1,26 +1,23 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.items;
+package com.botrpg.tomogamesyt.guilib.menu.items;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.List;
 
-class CloseSlot implements iMenuItem{
+class HelmButton implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return ChatColor.RED + "閉じる";
+        return ChatColor.GOLD + "Helmetを選ぶ";
     }
-
     @Override
     public Material getMaterial() {
-        return Material.BARRIER;
+        return Material.IRON_HELMET;
     }
-
     @Override
     public List<String> getLore() {
         return null;
     }
-
     @Override
     public int getCustomModelData() {
         return 0;

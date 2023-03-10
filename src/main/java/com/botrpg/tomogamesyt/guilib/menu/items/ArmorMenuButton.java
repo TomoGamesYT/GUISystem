@@ -1,18 +1,19 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.items;
+package com.botrpg.tomogamesyt.guilib.menu.items;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.List;
 
-public class ReturnToPrevious implements iMenuItem{
+class ArmorMenuButton implements iMenuItem {
     @Override
     public String getDisplayName() {
-        return "前に戻る";
+        return ChatColor.AQUA + "装備画面を開く";
     }
 
     @Override
     public Material getMaterial() {
-        return Material.BARRIER;
+        return Material.IRON_CHESTPLATE;
     }
 
     @Override

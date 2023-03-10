@@ -1,4 +1,4 @@
-package com.github.tomogamesyt.guisystem.guisystem;
+package com.botrpg.tomogamesyt.guilib;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;

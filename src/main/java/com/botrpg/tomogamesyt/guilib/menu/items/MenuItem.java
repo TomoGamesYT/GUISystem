@@ -1,4 +1,4 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.items;
+package com.botrpg.tomogamesyt.guilib.menu.items;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

@@ -1,9 +1,9 @@
-package com.github.tomogamesyt.guisystem.guisystem;
+package com.botrpg.tomogamesyt.guilib;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.gui.GenInventory;
-import com.github.tomogamesyt.guisystem.guisystem.menu.gui.iInventoryFrame;
-import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
-import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.HistoryData;
+import com.botrpg.tomogamesyt.guilib.menu.gui.GenInventory;
+import com.botrpg.tomogamesyt.guilib.menu.gui.iInventoryFrame;
+import com.botrpg.tomogamesyt.guilib.menu.items.MenuItem;
+import com.botrpg.tomogamesyt.guilib.menu.sysFrame.HistoryData;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

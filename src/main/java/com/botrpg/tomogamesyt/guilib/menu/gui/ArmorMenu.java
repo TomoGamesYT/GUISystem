@@ -1,7 +1,7 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.gui;
+package com.botrpg.tomogamesyt.guilib.menu.gui;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
-import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.CustomInventory;
+import com.botrpg.tomogamesyt.guilib.menu.items.MenuItem;
+import com.botrpg.tomogamesyt.guilib.menu.sysFrame.CustomInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;

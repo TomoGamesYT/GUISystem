@@ -1,6 +1,6 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame;
+package com.botrpg.tomogamesyt.guilib.menu.sysFrame;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
+import com.botrpg.tomogamesyt.guilib.menu.items.MenuItem;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;

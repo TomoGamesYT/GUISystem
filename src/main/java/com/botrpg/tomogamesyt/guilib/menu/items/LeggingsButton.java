@@ -1,24 +1,23 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.items;
+package com.botrpg.tomogamesyt.guilib.menu.items;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 import java.util.List;
 
-class NullSlot implements iMenuItem{
+class LeggingsButton implements iMenuItem{
     @Override
     public String getDisplayName() {
-        return " ";
+        return ChatColor.GOLD + "Leggingsを選ぶ";
     }
     @Override
     public Material getMaterial() {
-        return Material.WHITE_STAINED_GLASS_PANE;
+        return Material.IRON_LEGGINGS;
     }
-
     @Override
     public List<String> getLore() {
         return null;
     }
-
     @Override
     public int getCustomModelData() {
         return 0;

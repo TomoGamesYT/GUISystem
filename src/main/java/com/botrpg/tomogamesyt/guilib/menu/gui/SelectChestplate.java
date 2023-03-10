@@ -1,8 +1,7 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.gui;
+package com.botrpg.tomogamesyt.guilib.menu.gui;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.items.MenuItem;
-import com.github.tomogamesyt.guisystem.guisystem.menu.items.iMenuItem;
-import com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame.CustomInventory;
+import com.botrpg.tomogamesyt.guilib.menu.items.MenuItem;
+import com.botrpg.tomogamesyt.guilib.menu.sysFrame.CustomInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -10,8 +9,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
-class SelectBoots implements iInventoryFrame{
+class SelectChestplate implements iInventoryFrame {
     private Player player;
+
     @Override
     public Inventory getInventory(Player player) {
         this.player = player;
@@ -28,14 +28,13 @@ class SelectBoots implements iInventoryFrame{
     public void closeEvent(InventoryCloseEvent event) {
         new GenInventory().open((Player) event.getPlayer(), getPrevious());
     }
-
-    @NotNull
     @Override
+    @NotNull
     public Inventory getInventory() {
-        Inventory inventory = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 36, "Select Boots")).getInventory();
+        Inventory inventory = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 36, "Select Chestplate")).getInventory();
         //Do Something//
-
         inventory.setItem(inventory.getSize()- 9, MenuItem.toItemStack(MenuItem.previousButton()));
+
 
         return inventory;
     }

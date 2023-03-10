@@ -1,6 +1,6 @@
-package com.github.tomogamesyt.guisystem.guisystem.menu.sysFrame;
+package com.botrpg.tomogamesyt.guilib.menu.sysFrame;
 
-import com.github.tomogamesyt.guisystem.guisystem.menu.gui.iInventoryFrame;
+import com.botrpg.tomogamesyt.guilib.menu.gui.iInventoryFrame;
 
 import java.util.UUID;
 
