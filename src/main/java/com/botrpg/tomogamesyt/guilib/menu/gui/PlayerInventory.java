@@ -1,6 +1,6 @@
 package com.botrpg.tomogamesyt.guilib.menu.gui;
 
-import com.botrpg.tomogamesyt.guilib.Main;
+import com.botrpg.tomogamesyt.guilib.InventoryLib;
 import com.botrpg.tomogamesyt.guilib.menu.items.MenuItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -15,7 +15,7 @@ public class PlayerInventory implements iInventoryFrame{
     private final ItemStack nullSlot = MenuItem.toItemStack(MenuItem.nullItem());
     private final ItemStack armorButton = MenuItem.toItemStack(MenuItem.armorButton());
 
-    private final Main main;
+    private final InventoryLib inventoryLib;
 
     @Override
     public Inventory getInventory(Player player) {
@@ -41,7 +41,7 @@ public class PlayerInventory implements iInventoryFrame{
                     GenInventory.armor().clickEvent(event);
                }
             }
-        }.runTask(main.getPlugin());
+        }.runTask(inventoryLib.getPlugin());
     }
 
     @Override
@@ -64,7 +64,7 @@ public class PlayerInventory implements iInventoryFrame{
         return inventory;
     }
 
-    PlayerInventory(Main main){
-        this.main = main;
+    PlayerInventory(InventoryLib inventoryLib){
+        this.inventoryLib = inventoryLib;
     }
 }

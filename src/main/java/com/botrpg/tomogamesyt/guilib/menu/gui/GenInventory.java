@@ -1,6 +1,6 @@
 package com.botrpg.tomogamesyt.guilib.menu.gui;
 
-import com.botrpg.tomogamesyt.guilib.Main;
+import com.botrpg.tomogamesyt.guilib.InventoryLib;
 import com.botrpg.tomogamesyt.guilib.menu.sysFrame.HistoryData;
 import org.bukkit.entity.Player;
 
@@ -19,8 +19,8 @@ public class GenInventory {
         return new ArmorMenu();
     }
 
-    public static iInventoryFrame player(Main main){
-        return new PlayerInventory(main);
+    public static iInventoryFrame player(InventoryLib inventoryLib){
+        return new PlayerInventory(inventoryLib);
     }
 
     public void open(Player player, iInventoryFrame inventoryFrame){

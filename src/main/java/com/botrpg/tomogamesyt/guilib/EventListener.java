@@ -17,10 +17,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 public class EventListener implements Listener {
-    private final Main main;
+    private final InventoryLib inventoryLib;
 
-    public EventListener(Main main){
-        this.main = main;
+    public EventListener(InventoryLib inventoryLib){
+        this.inventoryLib = inventoryLib;
     }
 
     @EventHandler
@@ -63,7 +63,7 @@ public class EventListener implements Listener {
 
         if(inventory.getType().equals(InventoryType.PLAYER)){
             //Player Inventory//
-            GenInventory.player(main).clickEvent(event);
+            GenInventory.player(inventoryLib).clickEvent(event);
             return;
         }
 
@@ -85,8 +85,8 @@ public class EventListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         if(player.getGameMode() == GameMode.CREATIVE||player.getGameMode() == GameMode.SPECTATOR)return;
-        GenInventory.player(main).getInventory(player);
-        HistoryData.getHistoryData(new GenInventory(), player).addQueue(player.getUniqueId(), GenInventory.player(main));
+        GenInventory.player(inventoryLib).getInventory(player);
+        HistoryData.getHistoryData(new GenInventory(), player).addQueue(player.getUniqueId(), GenInventory.player(inventoryLib));
         player.updateInventory();
     }
 }
