@@ -32,7 +32,7 @@ class SelectHelmet implements iInventoryFrame{
     public Inventory getInventory() {
         Inventory inventory = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 36, "Select Helmet")).getInventory();
         //Do Something//
-        inventory.setItem(inventory.getSize()- 9, MenuItem.toItemStack(MenuItem.previousButton()));
+        inventory.setItem(inventory.getSize()- 9, MenuItem.previousButton());
 
 
         return inventory;

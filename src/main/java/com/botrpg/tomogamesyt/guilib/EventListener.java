@@ -59,7 +59,7 @@ public class EventListener implements Listener {
         InventoryHolder holder = inventory.getHolder();
         if (holder == null)return;
 
-        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.nullItem())))return;
+        if(event.getCurrentItem().equals(MenuItem.nullItem()))return;
 
         if(inventory.getType().equals(InventoryType.PLAYER)){
             //Player Inventory//
@@ -69,12 +69,12 @@ public class EventListener implements Listener {
 
         iInventoryFrame inventoryClass = HistoryData.getHistoryData(GenInventory.getGenInventory(), player).getCurrentInventory().getInventoryClass();
 
-        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.closeButton()))){
+        if(event.getCurrentItem().equals(MenuItem.closeButton())){
             player.closeInventory();
             return;
         }
 
-        if(event.getCurrentItem().equals(MenuItem.toItemStack(MenuItem.previousButton()))) {
+        if(event.getCurrentItem().equals(MenuItem.previousButton())) {
             new GenInventory().open(player, inventoryClass.getPrevious());
             return;
         }

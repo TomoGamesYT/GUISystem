@@ -34,7 +34,7 @@ class SelectBoots implements iInventoryFrame{
         Inventory inventory = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 36, "Select Boots")).getInventory();
         //Do Something//
 
-        inventory.setItem(inventory.getSize()- 9, MenuItem.toItemStack(MenuItem.previousButton()));
+        inventory.setItem(inventory.getSize()- 9, MenuItem.previousButton());
 
         return inventory;
     }

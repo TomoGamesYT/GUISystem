@@ -19,7 +19,7 @@ public class CustomInventory implements InventoryHolder {
     private void initInventory(Inventory inventory){
         int size = inventory.getSize();
         if(size % 9 != 0)return;
-        ItemStack itemStack = MenuItem.toItemStack(MenuItem.nullItem());
+        ItemStack itemStack = MenuItem.nullItem();
         for(int slot = 0; slot<size; slot++){
             inventory.setItem(slot, itemStack);
         }

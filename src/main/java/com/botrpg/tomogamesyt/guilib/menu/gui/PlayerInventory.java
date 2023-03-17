@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class PlayerInventory implements iInventoryFrame{
     private Player player;
-    private final ItemStack nullSlot = MenuItem.toItemStack(MenuItem.nullItem());
-    private final ItemStack armorButton = MenuItem.toItemStack(MenuItem.armorButton());
+    private final ItemStack nullSlot = MenuItem.nullItem();
+    private final ItemStack armorButton = MenuItem.armorButton();
 
     private final InventoryLib inventoryLib;
 
@@ -57,10 +57,10 @@ public class PlayerInventory implements iInventoryFrame{
         }
 
         inventory.setItem(9, armorButton);
-        inventory.setItem(39, MenuItem.toItemStack(MenuItem.helmButton()));
-        inventory.setItem(38, MenuItem.toItemStack(MenuItem.chstpltButton()));
-        inventory.setItem(37, MenuItem.toItemStack(MenuItem.leggButton()));
-        inventory.setItem(36, MenuItem.toItemStack(MenuItem.bootsButton()));
+        inventory.setItem(39, MenuItem.helmButton());
+        inventory.setItem(38, MenuItem.chstpltButton());
+        inventory.setItem(37, MenuItem.leggButton());
+        inventory.setItem(36, MenuItem.bootsButton());
         return inventory;
     }
 

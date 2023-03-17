@@ -25,13 +25,13 @@ class ArmorMenu implements iInventoryFrame{
     public void clickEvent(InventoryClickEvent event) {
         ItemStack item = event.getCurrentItem();
         Player player = (Player) event.getWhoClicked();
-        if (MenuItem.toItemStack(MenuItem.helmButton()).equals(item)) {
+        if (MenuItem.helmButton().equals(item)) {
             new GenInventory().open(player, helm());
-        } else if (MenuItem.toItemStack(MenuItem.chstpltButton()).equals(item)) {
+        } else if (MenuItem.chstpltButton().equals(item)) {
             new GenInventory().open(player, chstplt());
-        }else if(MenuItem.toItemStack(MenuItem.leggButton()).equals(item)){
+        }else if(MenuItem.leggButton().equals(item)){
             new GenInventory().open(player, leggs());
-        }else if(MenuItem.toItemStack(MenuItem.bootsButton()).equals(item)){
+        }else if(MenuItem.bootsButton().equals(item)){
             new GenInventory().open(player, boots());
         }
     }
@@ -43,12 +43,12 @@ class ArmorMenu implements iInventoryFrame{
     public Inventory getInventory() {
         Inventory inv = new CustomInventory(player.getUniqueId(), Bukkit.createInventory(player, 54, player.getDisplayName() + " armor")).getInventory();
         //Do Something..//
-        inv.setItem(inv.getSize()- 9, MenuItem.toItemStack(MenuItem.closeButton()));
+        inv.setItem(inv.getSize()- 9, MenuItem.closeButton());
 
-        inv.setItem(10, MenuItem.toItemStack(MenuItem.helmButton()));
-        inv.setItem(19, MenuItem.toItemStack(MenuItem.chstpltButton()));
-        inv.setItem(28, MenuItem.toItemStack(MenuItem.leggButton()));
-        inv.setItem(37, MenuItem.toItemStack(MenuItem.bootsButton()));
+        inv.setItem(10, MenuItem.helmButton());
+        inv.setItem(19, MenuItem.chstpltButton());
+        inv.setItem(28, MenuItem.leggButton());
+        inv.setItem(37, MenuItem.bootsButton());
 
         return inv;
     }
